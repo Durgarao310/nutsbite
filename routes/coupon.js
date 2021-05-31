@@ -6,7 +6,10 @@ const userJWT = require('../middlewares/userJWT');
 const verifyToken = require('../middlewares/verifytoken');
 
 // get all coupons
-router.get("/",(userJWT || validateJWT || verifyToken ) ,couponController.coupons_get);
+router.get("/user", userJWT,couponController.coupons_get);
+router.get("/admin", validateJWT,couponController.coupons_get);
+router.get("/", verifyToken,couponController.coupons_get);
+
 
 //get single coupon 
 router.get("/:id", (userJWT || validateJWT || verifyToken ), couponController.single_coupon);

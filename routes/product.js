@@ -6,30 +6,34 @@ const verifyToken = require('../middlewares/verifytoken');
 const userJWT = require('../middlewares/userJWT');
 
 // get all products
-router.get("/", (userJWT || verifyToken ),productController.product_get);
+router.get("/", verifyToken ,productController.product_get);
+router.get("/user/", userJWT,productController.product_get);
+
 
 //get single product 
-router.get("/:id", (userJWT || verifyToken ), productController.single_product);
+router.get("/:id",  verifyToken, productController.single_product);
+router.get("/user/:id", userJWT, productController.single_product);
+
 
 //add a product
-router.post(
-  "/post",
-  upload.single("imageUrl"),
-  resize,
-  (userJWT || verifyToken ),
-  productController.product_post
-);
+// router.post(
+//   "/post",
+//   upload.single("imageUrl"),
+//   resize,
+//  verifyToken ,
+//   productController.product_post
+// );
 
 //update
-router.patch(
-  "/:id",
-  upload.single("imageUrl"),
-  resize,
-  (userJWT || verifyToken ),
-  productController.product_update
-);
+// router.patch(
+//   "/:id",
+//   upload.single("imageUrl"),
+//   resize,
+//  verifyToken ,
+//   productController.product_update
+// );
 
 //delete
-router.delete("/:id", (userJWT || verifyToken ), productController.product_delete);
+// router.delete("/:id", verifyToken , productController.product_delete);
 
 module.exports = router;
