@@ -7,12 +7,12 @@ const userJWT = require('../middlewares/userJWT');
 
 // get all products
 router.get("/", verifyToken ,productController.product_get);
-router.get("/user/", userJWT,productController.product_get);
+router.get("/user/",productController.product_get);
 
 
 //get single product 
 router.get("/:id",  verifyToken, productController.single_product);
-router.get("/user/:id", userJWT, productController.single_product);
+router.get("/user/:id", productController.single_product);
 
 
 //add a product

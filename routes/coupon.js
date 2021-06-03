@@ -12,7 +12,10 @@ router.get("/", verifyToken,couponController.coupons_get);
 
 
 //get single coupon 
-router.get("/:id", (userJWT || validateJWT || verifyToken ), couponController.single_coupon);
+router.get("/user/:id", userJWT , couponController.single_coupon);
+router.get("/admin/:id",validateJWT , couponController.single_coupon);
+router.get("/:id",verifyToken , couponController.single_coupon);
+
 
 //add coupon
 router.post(
