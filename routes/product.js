@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const { upload, resize } = require("../middlewares/upload");
 const productController = require("../controllers/controller.product");
 const verifyToken = require('../middlewares/verifytoken');
 const userJWT = require('../middlewares/userJWT');
